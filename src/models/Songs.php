@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../../lib/getid3/getid3/getid3.php');
+require_once(__DIR__ . '/../../lib/getid3/getID3/getID3.php');
 
 class Songs {
     private $sql;
