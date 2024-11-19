@@ -155,56 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.delete-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const songId = this.dataset.songId;
-            
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "No podrás revertir esta acción",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Sí, eliminar',
-                cancelButtonText: 'Cancelar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: 'index.php?r=deletesong',
-                        type: 'POST',
-                        data: { song_id: songId },
-                        success: function(response) {
-                            if (response === "success") {
-                                // Eliminar la fila de la tabla
-                                const row = document.querySelector(`tr[data-song-id="${songId}"]`);
-                                if (row) {
-                                    row.remove();
-                                }
-                                
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: '¡Eliminado!',
-                                    text: 'La canción ha sido eliminada.',
-                                    timer: 2000,
-                                    showConfirmButton: false
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'No se pudo eliminar la canción'
-                                });
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error en la petición AJAX:', error);
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: 'Error al eliminar la canción'
-                            });
-                        }
-                    });
-                }
-            });
+
+            deleteSong(songId);
         });
     });
+
+    function deleteSong(id) {
+        if(confirm('¿Quieres eliminar esta canción?')) {
+            window.location.href = 'index.php?r=deletesong&id=' + id;
+        }
+    }
 }); 

@@ -39,7 +39,7 @@
                         <h5 class="card-title mb-0"><i class="bi bi-music-note-plus"></i> Añadir Nueva Canción</h5>
                     </div>
                     <div class="card-body">
-                        <form action="index.php?r=form" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        <form action="index.php?r=form" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre de la canción</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required>
