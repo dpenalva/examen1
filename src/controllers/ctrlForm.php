@@ -5,11 +5,7 @@ function ctrlForm($request, $response, $container) {
         try {
             $nombre = $request->get(INPUT_POST, 'nombre');
             $artista = $request->get(INPUT_POST, 'artista');
-            
-            if (empty($nombre) || empty($artista)) {
-                throw new Exception("Todos los campos son obligatorios");
-            }
-            
+
             $songs = $container->Songs();
             
             if ($songs->addSong($nombre, $artista, $_FILES['archivo'])) {

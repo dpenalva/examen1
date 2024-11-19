@@ -37,7 +37,7 @@ class Songs {
             throw new Exception("Error al subir el archivo.");
         }
 
-        // Obtener duración usando getID3
+        // getID3
         $getID3 = new getID3();
         $fileInfo = $getID3->analyze($rutaCompleta);
         
@@ -71,11 +71,11 @@ class Songs {
                 artista = :artista 
             WHERE id = :id
         ");
-        
+
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':artista', $artista);
-        
+
         return $stmt->execute();
     }
 

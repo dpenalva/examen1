@@ -21,7 +21,6 @@ include "../src/models/Songs.php";
 include "../src/controllers/ctrlIndex.php";
 include "../src/controllers/ctrlForm.php";
 include "../src/controllers/ctrlJson.php";
-include "../src/controllers/ctrlEdit.php";
 include "../src/controllers/ctrlUpdateSong.php";
 include "../src/controllers/ctrlDeleteSong.php";
 
@@ -50,8 +49,6 @@ if($r == "") {
     $response = ctrlIndex($request, $response, $container);
 } elseif($r == "form") {
     $response = ctrlForm($request, $response, $container);
-} elseif($r == "jsonEdit") {
-    $response = ctrlEdit($request, $response, $container);
 } elseif ($r == "updatesong") {
     $response = ctrlUpdateSong($request, $response, $container);
 } elseif ($r == "deletesong") {
