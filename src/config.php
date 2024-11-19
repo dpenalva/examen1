@@ -5,5 +5,10 @@
  * */ 
 
 $config = [
-
+    "db" => [
+        "user" => "root",
+        "pass" => "12345",
+        "db" => "examen1",
+        "host" => "mysql"
+    ]
 ];
