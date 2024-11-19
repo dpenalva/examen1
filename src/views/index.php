@@ -94,8 +94,8 @@
                                         <button class="btn btn-primary btn-sm play-btn">
                                             <i class="bi bi-play-fill"></i>
                                         </button>
-                                        <button class="btn btn-secondary btn-sm pause-btn">
-                                            <i class="bi bi-pause-fill"></i>
+                                        <button class="btn btn-secondary btn-sm stop-btn">
+                                            <i class="bi bi-stop-fill"></i>
                                         </button>
                                         <button class="btn btn-info btn-sm mute-btn">
                                             <i class="bi bi-volume-up-fill"></i>

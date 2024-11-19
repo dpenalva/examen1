@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Manejar botones de pausa
-    document.querySelectorAll('.pause-btn').forEach(btn => {
+    document.querySelectorAll('.stop-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const audio = this.closest('td').querySelector('audio');
             const playBtn = this.closest('td').querySelector('.play-btn');
