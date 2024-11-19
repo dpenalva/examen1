@@ -12,20 +12,24 @@
 <body>
   <!--Navbar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
-                <i class="bi bi-music-note-list fs-4 me-2"></i>
-              Test Project
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.php">
+                <img src="uploads/logo.png" alt="Logo" height="30" class="d-inline-block align-text-top">
+               Test Project
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?r=form"><i class="bi bi-plus-circle"></i> Añadir Música</a>
+                        <a class="nav-link" href="index.php?r=form">Añadir Canción</a>
                     </li>
                 </ul>
+                <div class="d-flex">
+                    <a href="index.php?r=login" class="btn btn-outline-light me-2">Login</a>
+                    <a href="index.php?r=register" class="btn btn-light">Register</a>
+                </div>
             </div>
         </div>
     </nav>
