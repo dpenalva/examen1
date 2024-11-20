@@ -11,11 +11,11 @@
 
 <body>
   <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-white bg-warning">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-                <img src="uploads/logo.png" alt="Logo" height="30" class="d-inline-block align-text-top">
-               Test Project
+                <Xalt="Logo" height="30" class="d-inline-block align-text-top">
+               WEBAMP
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -25,11 +25,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?r=form">Añadir Canción</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?r=credits">Credits</a>
+                    </li>
                 </ul>
-                <div class="d-flex">
-                    <a href="index.php?r=login" class="btn btn-outline-light me-2">Login</a>
-                    <a href="index.php?r=register" class="btn btn-light">Register</a>
-                </div>
             </div>
         </div>
     </nav>
@@ -39,7 +38,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-warning text-white">
                         <h5 class="card-title mb-0"><i class="bi bi-music-note-plus"></i> Añadir Nueva Canción</h5>
                     </div>
                     <div class="card-body">

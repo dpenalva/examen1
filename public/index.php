@@ -23,6 +23,7 @@ include "../src/controllers/ctrlForm.php";
 include "../src/controllers/ctrlJson.php";
 include "../src/controllers/ctrlUpdateSong.php";
 include "../src/controllers/ctrlDeleteSong.php";
+include "../src/controllers/ctrlCredits.php";
 
 /**
  * Carreguem el contenidor
@@ -53,6 +54,8 @@ if($r == "") {
     $response = ctrlUpdateSong($request, $response, $container);
 } elseif ($r == "deletesong") {
     $response = ctrlDeleteSong($request, $response, $container);
+} elseif ($r == "credits") {
+    $response = ctrlCredits($request, $response, $container);
 } else {
     echo "No existeix la ruta";
 }

@@ -7,129 +7,163 @@
     <title>Reproductor de Música</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-white bg-warning">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php">
-                <img src="uploads/logo.png" alt="Logo" height="30" class="d-inline-block align-text-top">
-               Test Project
+                <alt="Logo" height="30" class="d-inline-block align-text-top">
+                WEBAMP
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?r=form">Añadir Canción</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?r=credits">Credits</a>
+                    </li>
                 </ul>
-                <div class="d-flex">
-                    <a href="index.php?r=login" class="btn btn-outline-light me-2">Login</a>
-                    <a href="index.php?r=register" class="btn btn-light">Register</a>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Contenido de la pagina-->
-    <div class="container">
+    <div class="container mt-4">
+        <div class="card mb-4">
+            <div class="card-header bg-warning">
+                <h5 class="card-title mb-0">Player</h5>
+            </div>
+            <div class="card-body">
+                <div class="cancionRepro">
+                    <p class="mb-2"><i class="bi bi-music-note"></i>
+                    <span id="cancionAhora">Canción (Artista) (el que esta sonant)</span></p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary btn-sm" id="playBtn">
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+                        <button class="btn btn-secondary btn-sm" id="pauseBtn">
+                            <i class="bi bi-pause-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-warning">
+                <h5 class="card-title mb-0">Opcions</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="randomCheck">
+                    <label class="form-check-label" for="random">Aleatori</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="muteCheck">
+                    <label class="form-check-label" for="mute">Silencia</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-warning">
+                <h5 class="card-title mb-0">Cançó anterior</h5>
+            </div>
+            <div class="card-body">
+                <p><i class="bi bi-music-note"></i> Canción (Artista) (l'anterior)</p>
+            </div>
+        </div>
+
         <?php if (isset($_GET['success'])): ?>
             <div class="alert alert-success mt-4" role="alert">
                 <i class="bi bi-check-circle"></i> Canción añadida correctamente
             </div>
         <?php endif; ?>
-
-        <div class="container mt-4">
-            <div class="table-responsive-sm">
-                <table class="table align-middle">
-                    <thead class="table-dark">
-                        <tr>
-                            <!-- Columnas de los datos de la canción -->
-                            <th class="d-none d-sm-table-cell" style="width: 5%">#</th>
-                            <th style="width: 25%">
-                                <i class="bi bi-music-note"></i> 
-                                <span class="d-none d-sm-inline">Nombre</span>
-                            </th>
-                            <th style="width: 20%">
-                                <i class="bi bi-person"></i> 
-                                <span class="d-none d-sm-inline">Artista</span>
-                            </th>
-                            <th class="d-none d-md-table-cell" style="width: 10%">
-                                <i class="bi bi-clock"></i> 
-                                <span class="d-none d-md-inline">Duración</span>
-                            </th>
-                            <th style="width: 30%">
-                                <i class="bi bi-controller"></i> 
-                                <span class="d-none d-sm-inline">Controles</span>
-                            </th>
-                            <th style="width: 10%">
-                                <span class="d-none d-sm-inline">Acciones</span>
-                                <i class="bi bi-gear-fill d-sm-none"></i>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $contador = 1; ?>
-                        <?php foreach ($songs as $song): ?>
-                        <tr data-song-id="<?php echo htmlspecialchars($song['id']); ?>">
-                            <td class="d-none d-sm-table-cell"><?php echo $contador++; ?></td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-music-note me-2"></i>
-                                    <span class="text-truncate"><?php echo htmlspecialchars($song['nombre']); ?></span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <i class="bi bi-person me-2"></i>
-                                    <span class="text-truncate"><?php echo htmlspecialchars($song['artista']); ?></span>
-                                </div>
-                            </td>
-                            <td class="d-none d-md-table-cell">
-                                <?php echo htmlspecialchars($song['duracion']); ?>
-                            </td>
-                            <td>
-                                <div class="d-flex flex-column flex-sm-row gap-2">
-                                    <div class="btn-group">
-                                        <button class="btn btn-primary btn-sm play-btn">
-                                            <i class="bi bi-play-fill"></i>
-                                        </button>
-                                        <button class="btn btn-secondary btn-sm stop-btn">
-                                            <i class="bi bi-stop-fill"></i>
-                                        </button>
-                                        <button class="btn btn-info btn-sm mute-btn">
-                                            <i class="bi bi-volume-up-fill"></i>
-                                        </button>
-                                    </div>
-                                    <div class="progress w-100" style="height: 8px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                                <audio class="d-none">
-                                    <source src="uploads/songs/<?php echo htmlspecialchars($song['archivo']); ?>" type="audio/mpeg">
-                                </audio>
-                            </td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary btn-sm" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#editSongModal-<?php echo $song['id']; ?>">
-                                        <i class="bi bi-pencil"></i>
+        
+        <div class="table-responsive-sm">
+            <table class="table align-middle">
+                <thead class="table-warning">
+                    <tr>
+                        <th class="d-none d-sm-table-cell" style="width: 5%"></th>
+                        <th style="width: 25%">
+                            <i class="bi bi-music-note"></i> 
+                            <span class="d-none d-sm-inline">Nombre</span>
+                        </th>
+                        <th style="width: 20%">
+                            <i class="bi bi-person"></i> 
+                            <span class="d-none d-sm-inline">Artista</span>
+                        </th>
+                        <th style="width: 30%">
+                            <i class="bi bi-controller"></i> 
+                            <span class="d-none d-sm-inline">Controles</span>
+                        </th>
+                        <th style="width: 10%">
+                            <span class="d-none d-sm-inline">Acciones</span>
+                            <i class="bi bi-gear-fill d-sm-none"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $contador = 1; ?>
+                    <?php foreach ($songs as $song): ?>
+                    <tr data-song-id="<?php echo htmlspecialchars($song['id']); ?>">
+                        <td class="d-none d-sm-table-cell"><?php echo $contador++; ?></td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-music-note me-2"></i>
+                                <span class="text-truncate"><?php echo htmlspecialchars($song['nombre']); ?></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-person me-2"></i>
+                                <span class="text-truncate"><?php echo htmlspecialchars($song['artista']); ?></span>
+                            </div>
+                        </td>
+                        <td class="d-none d-md-table-cell">
+                            <?php echo htmlspecialchars($song['duracion']); ?>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-column flex-sm-row gap-2">
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-sm play-btn">
+                                        <i class="bi bi-play-fill"></i>
                                     </button>
-                                    <button class="btn btn-outline-danger btn-sm delete-btn" 
-                                            data-song-id="<?php echo $song['id']; ?>">
-                                        <i class="bi bi-trash"></i>
+                                    <button class="btn btn-secondary btn-sm stop-btn">
+                                        <i class="bi bi-stop-fill"></i>
+                                    </button>
+                                    <button class="btn btn-info btn-sm mute-btn">
+                                        <i class="bi bi-volume-up-fill"></i>
                                     </button>
                                 </div>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                            </div>
+                            <audio class="d-none">
+                                <source src="uploads/songs/<?php echo htmlspecialchars($song['archivo']); ?>" type="audio/mpeg">
+                            </audio>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-primary btn-sm" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#editSongModal-<?php echo $song['id']; ?>">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-outline-danger btn-sm delete-btn" 
+                                        data-song-id="<?php echo $song['id']; ?>">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -170,6 +204,7 @@
     </div>
     <?php endforeach; ?>
 
+    
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
